@@ -1,8 +1,14 @@
 import { Editor } from '@tinymce/tinymce-react';
 import './styles/tailwind_output.css';
+import { useState } from 'react';
 
 export default function App() {
+  const [data, setData] = useState('');
   // https://www.tiny.cloud/docs/configure/editor-appearance/#font_formats
+  function createMarkup() {
+    console.log(data);
+    return { __html: data };
+  }
   return (
     <div className="">
       <h1 className="mb-5">TinyMCE - REACT</h1>
@@ -10,8 +16,8 @@ export default function App() {
         apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
         // initialValue="<p>This is the initial content of the editor</p>"
         init={{
-          // skin: 'snow',
-          // icons: 'thin',
+          skin: 'snow',
+          icons: 'thin',
           placeholder: 'Enter you text here...',
           height: 400,
           menubar: true,
@@ -38,27 +44,12 @@ export default function App() {
           isImmediatePropagationStopped: () => boolean;
         }) => {
           console.log('Content was updated (handleOnChange):', e.target.getContent());
+          setData(e.target.getContent());
         }}
         outputFormat="html"
       />
       <article className="mt-24 prose">
-        <h1>Garlic bread with cheese: What the science tells us</h1>
-        <p>
-          For years parents have espoused the health benefits of eating garlic bread with cheese to their children, with
-          the food earning such an iconic status in our culture that kids will often dress up as warm, cheesy loaf for
-          Halloween.
-        </p>
-        <p>
-          But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases springing up
-          around the country.
-        </p>
-        <ol>
-          <li>hello</li>
-          <li>wolre</li>
-          <li>fhsalef</li>
-          <li>dskfa</li>
-          <li>vfasef</li>
-        </ol>
+        <div dangerouslySetInnerHTML={createMarkup()} />;
       </article>
     </div>
   );
