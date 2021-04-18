@@ -1,18 +1,19 @@
 {
-  "name": "Tinymce",
+  "name": "tinymce-typescript",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:tailwind": "npx tailwindcss build src/styles/tailwind.css -o src/styles/tailwind_output.css",
+    "build:postcss": "postcss src/styles/tailwind.css -o src/styles/tailwind_output.css",
+    "watch:postcss": "postcss src/styles/tailwind.css -o src/styles/tailwind_output.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:tailwind": "npx tailwindcss build src/styles/tailwind.css -o src/styles/tailwind_output.css",
-    "build:postcss": "postcss src/styles/tailwind.css -o src/styles/tailwind_output.css",
-    "watch:postcss": "postcss src/styles/tailwind.css -o src/styles/tailwind_output.css -w"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@babel/core": "^7.13.10",
+    "@tailwindcss/typography": "^0.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

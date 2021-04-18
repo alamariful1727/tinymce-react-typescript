@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   mode: 'jit',
   purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx}'],
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
   presets: [],
   variants: {
     extend: {
@@ -879,5 +879,5 @@ module.exports = {
       backgroundColor: ['active'],
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
