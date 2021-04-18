@@ -6,11 +6,11 @@ export default function App() {
     <div>
       <h1 className="mb-5">TinyMCE - REACT</h1>
       <Editor
-        apiKey="qagffr3pkuv17a8on1afax661irst1hbr4e6tbv888sz91jc"
+        apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
         // initialValue="<p>This is the initial content of the editor</p>"
         init={{
-          // skin: "snow",
-          // icons: "thin",
+          // skin: 'snow',
+          // icons: 'thin',
           placeholder: 'Enter you text here...',
           height: 400,
           menubar: true,
