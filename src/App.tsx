@@ -1,8 +1,14 @@
 import { Editor } from '@tinymce/tinymce-react';
 import './styles/tailwind_output.css';
+import { useState } from 'react';
 
 export default function App() {
+  const [data, setData] = useState('');
   // https://www.tiny.cloud/docs/configure/editor-appearance/#font_formats
+  function createMarkup() {
+    console.log(data);
+    return { __html: data };
+  }
   return (
     <div className="">
       <h1 className="mb-5">TinyMCE - REACT</h1>
@@ -10,8 +16,8 @@ export default function App() {
         apiKey={process.env.REACT_APP_TINYMCE_API_KEY}
         // initialValue="<p>This is the initial content of the editor</p>"
         init={{
-          // skin: 'snow',
-          // icons: 'thin',
+          skin: 'snow',
+          icons: 'thin',
           placeholder: 'Enter you text here...',
           height: 400,
           menubar: true,
@@ -38,6 +44,7 @@ export default function App() {
           isImmediatePropagationStopped: () => boolean;
         }) => {
           console.log('Content was updated (handleOnChange):', e.target.getContent());
+          setData(e.target.getContent());
         }}
         outputFormat="html"
       />
@@ -59,6 +66,8 @@ export default function App() {
           <li>dskfa</li>
           <li>vfasef</li>
         </ol>
+        <div className="prose">{data}</div>
+        <div dangerouslySetInnerHTML={createMarkup()} />;
       </article>
     </div>
   );
